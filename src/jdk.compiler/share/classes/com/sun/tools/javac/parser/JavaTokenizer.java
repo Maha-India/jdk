@@ -1011,6 +1011,15 @@ public class JavaTokenizer extends UnicodeReader {
                         }
                     }
                     break loop;
+                case '*':
+                    if (ch == '*') {
+                        nextChar();
+                        token = Token.EXP;  // New token for the exponentiation operator
+                    } else {
+                        token = Token.MUL;
+                    }
+                    break loop;
+                        
                 case '\"': // (Spec. 3.10)
                     scanString(pos);
                     break loop;
