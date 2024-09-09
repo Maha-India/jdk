@@ -1014,9 +1014,9 @@ public class JavaTokenizer extends UnicodeReader {
                 case '*':
                     if (ch == '*') {
                         nextChar();
-                        token = Token.EXP;  // New token for the exponentiation operator
+                        tk = TokenKind.EXP;  // New token for the exponentiation operator
                     } else {
-                        token = Token.MUL;
+                        tk = TokenKind.STAR;
                     }
                     break loop;
                         
