@@ -187,6 +187,7 @@ public class Tokens {
         PLUS("+"),
         SUB("-"),
         STAR("*"),
+        EXP("**"),
         SLASH("/"),
         AMP("&"),
         BAR("|"),
