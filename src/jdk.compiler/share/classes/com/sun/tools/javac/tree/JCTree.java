@@ -358,7 +358,8 @@ public abstract class JCTree implements Tree, Cloneable, DiagnosticPosition {
         USR,                             // >>>
         PLUS,                            // +
         MINUS,                           // -
-        MUL,                             // *
+        MUL, // *
+        EXP,// **
         DIV,                             // /
         MOD,                             // %
 
