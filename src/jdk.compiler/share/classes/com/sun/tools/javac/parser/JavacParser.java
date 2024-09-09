@@ -5382,6 +5382,8 @@ public class JavacParser implements Parser {
             return MINUS_ASG;
         case STAR:
             return MUL;
+        case EXP:  // Your new token
+            return EXP;
         case STAREQ:
             return MUL_ASG;
         case SLASH:
