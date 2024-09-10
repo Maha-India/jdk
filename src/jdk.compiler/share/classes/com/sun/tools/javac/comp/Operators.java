@@ -729,6 +729,12 @@ public class Operators {
                     .addBinaryOperator(FLOAT, FLOAT, FLOAT, fdiv)
                     .addBinaryOperator(LONG, LONG, LONG, ldiv)
                     .addBinaryOperator(INT, INT, INT, idiv),
+            new BinaryNumericOperator(Tag.EXP)  // EXP tag for the new ** operator
+                    .addBinaryOperator(DOUBLE, DOUBLE, DOUBLE, dpow)  // For doubles, use dpow
+                    .addBinaryOperator(FLOAT, FLOAT, FLOAT, fpow)     // For floats, use fpow
+                    .addBinaryOperator(LONG, LONG, LONG, lpow)        // For longs, use lpow (custom logic)
+                    .addBinaryOperator(INT, INT, INT, ipow),          // For ints, use ipow (custom logic)
+                      
             new BinaryNumericOperator(Tag.MOD)
                     .addBinaryOperator(DOUBLE, DOUBLE, DOUBLE, dmod)
                     .addBinaryOperator(FLOAT, FLOAT, FLOAT, fmod)
@@ -856,6 +862,7 @@ public class Operators {
         setOperatorName(Tag.MINUS, names.hyphen);
         setOperatorName(Tag.MUL, names.asterisk);
         setOperatorName(Tag.DIV, names.slash);
+        setOperatorName(Tag.EXP, "**");
         setOperatorName(Tag.MOD, "%");
     }
     //where
