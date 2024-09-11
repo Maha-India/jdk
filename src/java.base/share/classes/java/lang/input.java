@@ -8,27 +8,37 @@ public class input {
 
     // Method to input an integer
     public static int intgr() {
-        return scanner.nextInt();
+        int value = scanner.nextInt();
+        scanner.nextLine();
+        return value;
     }
 
     // Method to input a double
     public static double bigfrac() {
-        return scanner.nextDouble();
+        double value = scanner.nextDouble();
+        scanner.nextLine();
+        return value;
     }
 
     // Method to input a float
     public static float frac() {
-        return scanner.nextFloat();
+        float value = scanner.nextFloat();
+        scanner.nextLine();
+        return value;
     }
 
     // Method to input a long
     public static long lng() {
-        return scanner.nextLong();
+        long value = scanner.nextLong();
+        scanner.nextLine();
+        return value;
     }
 
     // Method to input a string (a single token, like one word)
-    public static String word) {
-        return scanner.next();
+    public static String word() {
+        String value = scanner.next();
+        scanner.nextLine();
+        return value;
     }
 
     // Method to input a full line of text
@@ -38,12 +48,16 @@ public class input {
 
     // Method to input a boolean
     public static boolean bool() {
-        return scanner.nextBoolean();
+        boolean value = scanner.nextBoolean();
+        scanner.nextLine();
+        return value;
     }
 
     //method to input a letter
     public static char ltr() {
-        return scanner.next().charAt(0);
+        String value = scanner.next().charAt(0);
+        scanner.nextLine();
+        return value;
     }
     // Method to close the scanner (though it's not typically needed in this utility class)
     public static void close() {
