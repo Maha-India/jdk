@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Red Hat, Inc.
+ * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -19,25 +19,31 @@
  * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
  * or visit www.oracle.com if you need additional information or have any
  * questions.
- *
  */
 
-#ifndef CGROUP_UTIL_LINUX_HPP
-#define CGROUP_UTIL_LINUX_HPP
+/*
+ * @test
+ * @bug 8334165
+ * @summary Test that jmx.serial.form is not recognised.
+ *
+ * @run main/othervm -Djmx.serial.form=1.0 SerialCompatRemovedTest
+ * @run main/othervm SerialCompatRemovedTest
+ */
 
-#include "utilities/globalDefinitions.hpp"
-#include "cgroupSubsystem_linux.hpp"
+import java.io.*;
+import java.util.*;
+import javax.management.ObjectName;
 
-class CgroupUtil: AllStatic {
+public class SerialCompatRemovedTest {
 
-  public:
-    static int processor_count(CgroupCpuController* cpu, int host_cpus);
-    // Given a memory controller, adjust its path to a point in the hierarchy
-    // that represents the closest memory limit.
-    static void adjust_controller(CgroupMemoryController* m);
-    // Given a cpu controller, adjust its path to a point in the hierarchy
-    // that represents the closest cpu limit.
-    static void adjust_controller(CgroupCpuController* c);
-};
+    public static void main(String[] args) throws Exception {
+        ObjectStreamClass osc = ObjectStreamClass.lookup(ObjectName.class);
+        // Serial form has no fields, uses writeObject, so we should never see
+        // non-zero field count here:
+        if (osc.getFields().length != 0) {
+            throw new Exception("ObjectName using old serial form?: fields: " +
+                    Arrays.asList(osc.getFields()));
+        }
+    }
+}
 
-#endif // CGROUP_UTIL_LINUX_HPP
