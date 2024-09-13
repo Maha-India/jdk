@@ -362,7 +362,7 @@ public class MemberEnter extends JCTree.Visitor {
 
         private static final Set<Tag> ALLOWED_OPERATORS =
                 EnumSet.of(Tag.POS, Tag.NEG, Tag.NOT, Tag.COMPL, Tag.PLUS, Tag.MINUS,
-                           Tag.MUL, Tag.DIV, Tag.MOD, Tag.SL, Tag.SR, Tag.USR,
+                           Tag.MUL, Tag.EXP, Tag.DIV, Tag.MOD, Tag.SL, Tag.SR, Tag.USR,
                            Tag.LT, Tag.LE, Tag.GT, Tag.GE, Tag.EQ, Tag.NE,
                            Tag.BITAND, Tag.BITXOR, Tag.BITOR, Tag.AND, Tag.OR);
 
