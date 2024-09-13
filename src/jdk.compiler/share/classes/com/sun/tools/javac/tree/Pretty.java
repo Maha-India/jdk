@@ -1321,6 +1321,7 @@ public class Pretty extends JCTree.Visitor {
             case PLUS:    return "+";
             case MINUS:   return "-";
             case MUL:     return "*";
+            case EXP:     return "**";
             case DIV:     return "/";
             case MOD:     return "%";
             default: throw new Error();
