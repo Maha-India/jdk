@@ -659,7 +659,7 @@ public class Code {
         case isub:
         case iadd:
         case imul:
-        case iexp:
+        case ipow:
         case idiv:
         case imod:
         case ishl:
@@ -679,7 +679,7 @@ public class Code {
         case lor:
         case lxor:
         case lmod:
-        case lexp:
+        case lpow:
         case ldiv:
         case lmul:
         case lsub:
@@ -759,7 +759,7 @@ public class Code {
         case int2short:
             break;
         case fmul:
-        case fexp:
+        case fpow:
         case fadd:
         case fsub:
         case fdiv:
@@ -889,7 +889,7 @@ public class Code {
         case dadd:
         case dsub:
         case dmul:
-        case dexp:
+        case dpow:
         case ddiv:
         case dmod:
             state.pop(2);
