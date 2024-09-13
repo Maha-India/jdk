@@ -557,7 +557,7 @@ public class TreeInfo {
             case LE: case GE: case SL:
             case SR: case USR: case PLUS:
             case MINUS: case MUL: case DIV:
-            case MOD:
+            case MOD: case EXP:
             case POSTINC:
             case POSTDEC:
                 return getStartPos(((JCOperatorExpression) tree).getOperand(LEFT));
