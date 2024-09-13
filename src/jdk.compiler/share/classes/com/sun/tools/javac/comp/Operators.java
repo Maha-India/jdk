@@ -730,10 +730,10 @@ public class Operators {
                     .addBinaryOperator(LONG, LONG, LONG, ldiv)
                     .addBinaryOperator(INT, INT, INT, idiv),
             new BinaryNumericOperator(Tag.EXP)  // EXP tag for the new ** operator
-                    .addBinaryOperator(DOUBLE, DOUBLE, DOUBLE, dpow)  // For doubles, use dpow
-                    .addBinaryOperator(FLOAT, FLOAT, FLOAT, fpow)     // For floats, use fpow
-                    .addBinaryOperator(LONG, LONG, LONG, lpow)        // For longs, use lpow (custom logic)
-                    .addBinaryOperator(INT, INT, INT, ipow),          // For ints, use ipow (custom logic)
+                    .addBinaryOperator(DOUBLE, DOUBLE, DOUBLE, (l, r) -> Math.pow(l, r))  // For doubles, use dpow
+                    .addBinaryOperator(FLOAT, FLOAT, FLOAT, (l, r) -> (float)Math.pow(l, r))     // For floats, use fpow
+                    .addBinaryOperator(LONG, LONG, LONG, (l, r) -> (long)Math.pow(l, r))        // For longs, use lpow (custom logic)
+                    .addBinaryOperator(INT, INT, INT, (l, r) -> (int)Math.pow(l, r)),          // For ints, use ipow (custom logic)
                       
             new BinaryNumericOperator(Tag.MOD)
                     .addBinaryOperator(DOUBLE, DOUBLE, DOUBLE, dmod)
