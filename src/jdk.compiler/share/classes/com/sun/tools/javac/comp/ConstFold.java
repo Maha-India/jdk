@@ -152,6 +152,8 @@ strictfp class ConstFold {
                     return syms.intType.constType(intValue(l) - intValue(r));
                 case imul:
                     return syms.intType.constType(intValue(l) * intValue(r));
+                case iexp:  // New case for integer exponentiation
+                    return syms.intType.constType(intPow(intValue(l), intValue(r)));
                 case idiv:
                     return syms.intType.constType(intValue(l) / intValue(r));
                 case imod:
@@ -206,6 +208,8 @@ strictfp class ConstFold {
                 case lmul:
                     return syms.longType.constType(
                         Long.valueOf(longValue(l) * longValue(r)));
+                case lexp:  // New case for integer exponentiation
+                    return syms.intType.constType(longPow(longValue(l), longValue(r)));
                 case ldiv:
                     return syms.longType.constType(
                         Long.valueOf(longValue(l) / longValue(r)));
@@ -246,6 +250,8 @@ strictfp class ConstFold {
                 case fmul:
                     return syms.floatType.constType(
                         Float.valueOf(floatValue(l) * floatValue(r)));
+                case fexp:  
+                    return syms.floatType.constType((float) Math.pow(floatValue(l), floatValue(r)));
                 case fdiv:
                     return syms.floatType.constType(
                         Float.valueOf(floatValue(l) / floatValue(r)));
@@ -272,6 +278,8 @@ strictfp class ConstFold {
                 case dmul:
                     return syms.doubleType.constType(
                         Double.valueOf(doubleValue(l) * doubleValue(r)));
+                case dexp:  
+                        return syms.doubleType.constType(Math.pow(doubleValue(l), doubleValue(r)));
                 case ddiv:
                     return syms.doubleType.constType(
                         Double.valueOf(doubleValue(l) / doubleValue(r)));
@@ -304,6 +312,31 @@ strictfp class ConstFold {
             return null;
         }
     }
+
+    // Helper methods
+private int intPow(int base, int exp) {
+    int result = 1;
+    while (exp > 0) {
+        if ((exp & 1) == 1) {
+            result *= base;
+        }
+        base *= base;
+        exp >>= 1;
+    }
+    return result;
+}
+
+private long longPow(long base, long exp) {
+    long result = 1L;
+    while (exp > 0) {
+        if ((exp & 1) == 1) {
+            result *= base;
+        }
+        base *= base;
+        exp >>= 1;
+    }
+    return result;
+}
 
     /** Coerce constant type to target type.
      *  @param etype      The source type of the coercion,
