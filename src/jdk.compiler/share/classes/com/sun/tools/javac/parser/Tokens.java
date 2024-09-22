@@ -107,6 +107,7 @@ public class Tokens {
         CLASS("class"),
         CONST("const"),
         CONTINUE("continue"),
+        CPX("cpx", Tag.NAMED),
         DEFAULT("default"),
         DO("do"),
         DOUBLE("double", Tag.NAMED),
