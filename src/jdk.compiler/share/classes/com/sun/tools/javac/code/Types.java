@@ -1113,7 +1113,7 @@ public class Types {
                  case CHAR:
                      return (!s.hasTag(SHORT) && t.getTag().isSubRangeOf(s.getTag()));
                  case SHORT: case INT: case LONG:
-                 case FLOAT: case DOUBLE:
+                 case FLOAT: case DOUBLE: case CPX:
                      return t.getTag().isSubRangeOf(s.getTag());
                  case BOOLEAN: case VOID:
                      return t.hasTag(s.getTag());
@@ -1359,7 +1359,7 @@ public class Types {
 
                 switch (t.getTag()) {
                 case BYTE: case CHAR: case SHORT: case INT: case LONG: case FLOAT:
-                case DOUBLE: case BOOLEAN: case VOID: case BOT: case NONE:
+                case DOUBLE: case CPX: case BOOLEAN: case VOID: case BOT: case NONE:
                     return t.hasTag(s.getTag());
                 case TYPEVAR: {
                     if (s.hasTag(TYPEVAR)) {
@@ -1715,7 +1715,7 @@ public class Types {
 
                 switch (t.getTag()) {
                 case BYTE: case CHAR: case SHORT: case INT: case LONG: case FLOAT:
-                case DOUBLE:
+                case DOUBLE: case CPX:
                     return s.isNumeric();
                 case BOOLEAN:
                     return s.hasTag(BOOLEAN);
@@ -2418,7 +2418,7 @@ public class Types {
                                 return s;
                             }
                             //fall-through
-                        case BYTE, CHAR, SHORT, LONG, FLOAT, INT, DOUBLE, BOOLEAN,
+                        case BYTE, CHAR, SHORT, LONG, FLOAT, INT, DOUBLE, CPX, BOOLEAN,
                              ARRAY, MODULE, TYPEVAR, WILDCARD, BOT:
                             return s.dropMetadata(Annotations.class);
                         case VOID, METHOD, PACKAGE, FORALL, DEFERRED,
@@ -5147,6 +5147,9 @@ public class Types {
                 case CHAR:
                     append('C');
                     break;
+                case CPX:
+                    append('P');
+                    break;
                 case INT:
                     append('I');
                     break;
@@ -5303,6 +5306,8 @@ public class Types {
                 return syms.longType;
             case ClassFile.CONSTANT_Double:
                 return syms.doubleType;
+            case ClassFile.CONSTANT_Cpx:
+                return syms.cpxType;
             case ClassFile.CONSTANT_MethodHandle:
                 return syms.methodHandleType;
             case ClassFile.CONSTANT_MethodType:
