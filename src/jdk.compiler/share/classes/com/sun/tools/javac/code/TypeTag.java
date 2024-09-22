@@ -65,6 +65,9 @@ public enum TypeTag {
     /** The tag of the basic type `double'.
      */
     DOUBLE(DOUBLE_CLASS, DOUBLE_CLASS, true),
+    /** The tag of the basic type `cpx'.
+     */
+    CPX(CPX_CLASS, CPX_CLASS, true),
     /** The tag of the basic type `boolean'.
      */
     BOOLEAN(0, 0, true),
@@ -157,6 +160,7 @@ public enum TypeTag {
         public static final int LONG_CLASS = 16;
         public static final int FLOAT_CLASS = 32;
         public static final int DOUBLE_CLASS = 64;
+        public static final int CPX = 64;
 
         static final int BYTE_SUPERCLASSES = BYTE_CLASS | SHORT_CLASS | INT_CLASS |
                 LONG_CLASS | FLOAT_CLASS | DOUBLE_CLASS;
@@ -211,6 +215,8 @@ public enum TypeTag {
             return Kind.BOOLEAN_LITERAL;
         case CHAR:
             return Kind.CHAR_LITERAL;
+        case CPX:
+            return Kind.CPX_LITERAL;
         case CLASS:
             return Kind.STRING_LITERAL;
         case BOT:
@@ -234,6 +240,8 @@ public enum TypeTag {
             return TypeKind.LONG;
         case CHAR:
             return TypeKind.CHAR;
+        case CPX:
+            return Kind.CPX_LITERAL;
         case FLOAT:
             return TypeKind.FLOAT;
         case DOUBLE:
