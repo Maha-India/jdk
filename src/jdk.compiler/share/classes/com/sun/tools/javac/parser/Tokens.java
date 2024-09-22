@@ -237,6 +237,8 @@ public class Tokens {
                 return "token.identifier";
             case CHARLITERAL:
                 return "token.character";
+            case CPXLITERAL:
+                return "token.cpx";
             case STRINGLITERAL:
                 return "token.string";
             case INTLITERAL:
